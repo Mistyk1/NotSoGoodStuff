@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "notsogoodstuff:block/cactus_log",
+    "down": "notsogoodstuff:block/cactus_log",
+    "up": "notsogoodstuff:block/cactus_log",
+    "north": "notsogoodstuff:block/cactus_log",
+    "east": "notsogoodstuff:block/cactus_log",
+    "south": "notsogoodstuff:block/cactus_log",
+    "west": "notsogoodstuff:block/cactus_log"
+  }
+}

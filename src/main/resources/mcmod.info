@@ -1,0 +1,16 @@
+[
+{
+  "modid": "notsogoodstuff",
+  "name": "(Not So) Good Stuff",
+  "description": "Adds some random items that I though about",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Mistyk__"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
