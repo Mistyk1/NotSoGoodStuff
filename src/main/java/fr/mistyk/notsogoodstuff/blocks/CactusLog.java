@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 
 public class CactusLog extends Block implements IHasModel {
+    //TODO: make this block work
     public CactusLog(){
         super(Material.CACTUS);
         setUnlocalizedName("cactus_log");

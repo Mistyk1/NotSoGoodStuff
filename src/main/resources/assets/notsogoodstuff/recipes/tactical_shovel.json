@@ -1,0 +1,25 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    " # ",
+    "XOX",
+    " @ "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_block"
+    },
+    "X": {
+      "item": "minecraft:quartz"
+    },
+    "O": {
+      "item": "minecraft:diamond_shovel"
+    },
+    "@": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "notsogoodstuff:tactical_shovel"
+  }
+}
