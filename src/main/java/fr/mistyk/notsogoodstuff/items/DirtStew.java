@@ -2,11 +2,11 @@ package fr.mistyk.notsogoodstuff.items;
 
 import fr.mistyk.notsogoodstuff.NotSoGoodStuffMain;
 import fr.mistyk.notsogoodstuff.util.IHasModel;
-import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemSoup;
 
-public class DirtStew extends ItemFood implements IHasModel{
+public class DirtStew extends ItemSoup implements IHasModel{
     public DirtStew(){
-        super(1, 0.5f, false);
+        super(1);
         setUnlocalizedName("dirt_stew");
         setRegistryName("dirt_stew");
         setMaxStackSize(16);

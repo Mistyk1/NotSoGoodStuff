@@ -3,6 +3,7 @@ package fr.mistyk.notsogoodstuff.items;
 import fr.mistyk.notsogoodstuff.NotSoGoodStuffMain;
 import fr.mistyk.notsogoodstuff.util.IHasModel;
 import fr.mistyk.notsogoodstuff.util.ItemMeshDefinitionHandler;
+import fr.mistyk.notsogoodstuff.util.NBTNames;
 import fr.mistyk.notsogoodstuff.util.References;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -20,14 +21,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class TacticalShovel extends ItemSpade implements IHasModel{
-    public final NBTTagCompound nbt;
-
     public TacticalShovel() {
         super(ToolMaterial.IRON);
         setUnlocalizedName("tactical_shovel");
         setRegistryName("tactical_shovel");
-        this.nbt = new NBTTagCompound();
-        nbt.setBoolean("isOpen", true);
         ItemInit.ITEMS.add(this);
         setCreativeTab(NotSoGoodStuffMain.NotSoGoodStuffTab);
     }
@@ -43,18 +40,20 @@ public class TacticalShovel extends ItemSpade implements IHasModel{
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand){
-        if (player.isSneaking() && player.getCooldownTracker().getCooldown(this, 0) == 0 && !world.isRemote){
-            player.getCooldownTracker().setCooldown(this, 5);
-            boolean open = !nbt.getBoolean("isOpen");
-            nbt.setBoolean("isOpen", open);
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn){
+        if (playerIn.isSneaking() && playerIn.getCooldownTracker().getCooldown(this, 0) == 0 && !worldIn.isRemote){
+            playerIn.getCooldownTracker().setCooldown(this, 5);
+            NBTTagCompound shovelData = playerIn.getHeldItem(handIn).getOrCreateSubCompound(NBTNames.TACTICAL_SHOVEL);
+            boolean open = !shovelData.getBoolean(NBTNames.TACTICAL_SHOVEL_OPEN);
+            shovelData.setBoolean(NBTNames.TACTICAL_SHOVEL_OPEN, open);
         }
-        return super.onItemRightClick(world, player, hand);
+        return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
     @Override
     public float getDestroySpeed(ItemStack stack, IBlockState state) {
-        if (!nbt.getBoolean("isOpen")){
+        NBTTagCompound shovelData = stack.getOrCreateSubCompound(NBTNames.TACTICAL_SHOVEL);
+        if (!shovelData.getBoolean(NBTNames.TACTICAL_SHOVEL_OPEN)){
             return 0.1F;
         }
         return super.getDestroySpeed(stack, state);
@@ -62,7 +61,8 @@ public class TacticalShovel extends ItemSpade implements IHasModel{
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (nbt.getBoolean("isOpen") && !player.isSneaking()){
+        NBTTagCompound shovelData = player.getHeldItem(hand).getOrCreateSubCompound(NBTNames.TACTICAL_SHOVEL);
+        if (shovelData.getBoolean(NBTNames.TACTICAL_SHOVEL_OPEN) && !player.isSneaking()){
             ItemStack itemstack = player.getHeldItem(hand);
 
             if (!player.canPlayerEdit(pos.offset(facing), facing, itemstack))
@@ -101,7 +101,5 @@ public class TacticalShovel extends ItemSpade implements IHasModel{
     }
 
     @Override
-    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        return true;
-    }
+    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) { return true; }
 }

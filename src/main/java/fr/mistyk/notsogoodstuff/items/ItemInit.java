@@ -11,4 +11,5 @@ public class ItemInit {
     public static final Item DIRT_STEW = new DirtStew();
     public static final Item TACTICAL_SHOVEL = new TacticalShovel();
     public static final Item SOUL_VIAL = new SoulVial();
+    public static final Item SOUL_CONTAINER = new SoulContainer();
 }

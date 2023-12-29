@@ -1,6 +1,12 @@
 itemGroup.notsogoodstuff.tab=(Not So) Good Stuff
 item.dirt_stew.name=Dirt Stew
-block.cactus_log.name=Cactus Log
-block.cactus_bark.name=Cactus Bark
 item.tactical_shovel.name=Tactical Shovel
 item.soul_vial.name=Soul Vial
+item.soul_container.name=Soul Container
+block.cactus_log.name=Cactus Log
+block.cactus_bark.name=Cactus Bark
+tooltip.no_container=No Soul Container installed
+tooltip.mob=Mob Contained
+tooltip.mob_health=Mob Health
+tooltip.no_mob=No Mob captured
+tooltip.hunger_value=Hunger Restored
