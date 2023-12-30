@@ -42,7 +42,7 @@ public class SoulContainer extends ItemFood implements IHasModel{
         NBTTagCompound healthData = stack.getOrCreateSubCompound(NBTNames.SOUL_CONTAINER);
         if (entityLiving instanceof EntityPlayer) {
             EntityPlayer entityplayer = (EntityPlayer)entityLiving;
-            entityplayer.getFoodStats().addStats((int)(healthData.getFloat(NBTNames.SOUL_CONTAINER_HEALTH)), healthData.getFloat(NBTNames.SOUL_CONTAINER_HEALTH) * 5);
+            entityplayer.getFoodStats().addStats((int)((healthData.getFloat(NBTNames.SOUL_CONTAINER_HEALTH) / 50) * 20), (int)(healthData.getFloat(NBTNames.SOUL_CONTAINER_HEALTH) / 10));
             worldIn.playSound((EntityPlayer)entityLiving, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
             entityplayer.addStat(StatList.getObjectUseStats(this));
             if (entityplayer instanceof EntityPlayerMP) { CriteriaTriggers.CONSUME_ITEM.trigger((EntityPlayerMP)entityplayer, stack); }
